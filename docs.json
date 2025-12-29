@@ -1,116 +1,116 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "casuro docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#7ECBD9",
+    "light": "#7ECBD9",
+    "dark": "#7ECBD9"
+  },
+  "fonts": {
+    "family": "Poppins"
+  },
+  "icons": {
+    "library": "lucide"
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
+        "group": "Getting started",
+        "icon": "Rocket",
+        "pages": [
+          "index",
+          "quickstart",
+          "overview"
+        ]
+      },
+      {
+        "group": "Basics",
+        "icon": "laptop-minimal",
+        "pages": [
+          "basics/collaboration",
+          "basics/a360",
+          "basics/case-study"
+        ]
+      },
+      {
+        "group": "Integrations",
+        "icon": "Heart",
+        "pages": [
+          "integrations/index",
           {
-            "group": "Getting started",
+            "group": "Ashby",
+            "expanded": false,
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "integrations/ashby/setup",
+              "integrations/ashby/assessments",
+              "integrations/ashby/tips-tricks"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Lever",
+            "expanded": false,
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "integrations/lever/setup",
+              "integrations/lever/assessments",
+              "integrations/lever/tips-tricks"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Teamtailor",
+            "expanded": false,
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "integrations/teamtailor/setup",
+              "integrations/teamtailor/assessments"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Merge",
+            "expanded": false,
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "integrations/merge/setup"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
+        "group": "Admin",
+        "icon": "Wrench",
+        "pages": [
+          "admin/settings"
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/dark.svg",
+    "dark": "/logo/light.svg"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Home  ",
+        "href": "https://casuro.ai"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Go to app",
+      "href": "https://app.casuro.ai"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

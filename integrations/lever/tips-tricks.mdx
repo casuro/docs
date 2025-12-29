@@ -1,0 +1,69 @@
+---
+title: 'Tips & Tricks'
+description: 'Best practices and helpful information for the Lever integration.'
+---
+
+## Understanding Tags
+
+Casuro uses tags to sync the status and results of assessments back to Lever. These tags are automatically added to the candidate's opportunity in Lever.
+
+### Impact & Progress Status
+
+Track the candidate's progress through the assessment workflow with these status tags:
+
+| Tag | Description |
+| --- | --- |
+| `casuro:a360:Invited` | Candidate has been invited to the A360 assessment. |
+| `casuro:a360:In progress` | Candidate has started the A360 assessment. |
+| `casuro:a360:Completed` | Candidate has completed the A360 assessment. |
+| `casuro:cs:Invited` | Candidate has been invited to the Case Study. |
+| `casuro:cs:In progress` | Candidate has started the Case Study. |
+| `casuro:cs:Completed` | Candidate has completed the Case Study. |
+
+### Assessment Scores
+
+Once an assessment is completed, the score is synced as a tag for quick reference.
+
+**Numeric Score**
+Format: `casuro:<type>:<score> out of <max>`
+Example: `casuro:a360:8 out of 10`
+
+**Binary Score (Pass/Fail)**
+Format: `casuro:<type>:<result>`
+Example: `casuro:cs:Pass`
+
+<Note>
+We support two assessment types:
+- `a360`: A360 Assessment
+- `cs`: Case Study
+</Note>
+
+## Troubleshooting
+
+If the integration isn't behaving as expected, you can check the API logs for detailed information.
+
+1. Go to **Settings** > **ATS Integrations** in Casuro.
+2. Select **Lever**.
+3. View the **Logs** section to see a history of API calls and any errors encountered.
+
+{/* TODO: Add a screenshot of the logs page */}
+
+<Note>
+Need help? Reach out to us at [support@casuro.ai](mailto:support@casuro.ai) or send a message in our community Slack channel.
+</Note>
+
+## Disconnecting the Integration
+
+If you need to disable the integration, you must do so in both Casuro and Lever.
+
+### In Casuro
+1. Go to **Settings** > **ATS Integrations**.
+2. Find **Lever** and click **Disconnect**.
+3. Confirm the action.
+
+### In Lever
+1. Log in to your Lever account.
+2. Navigate to **Settings** > **Integrations and API**.
+3. Click on the **Authorized Apps** tab.
+4. Locate **casuro.ai** in the list.
+5. Click **Revoke Access** to disable the integration.
