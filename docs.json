@@ -44,7 +44,6 @@
             "expanded": false,
             "pages": [
               "integrations/ashby/setup",
-              "integrations/ashby/assessments",
               "integrations/ashby/tips-tricks"
             ]
           },
@@ -65,20 +64,14 @@
               "integrations/teamtailor/assessments"
             ]
           },
-          {
-            "group": "Merge",
-            "expanded": false,
-            "pages": [
-              "integrations/merge/setup"
-            ]
-          }
+          "integrations/other-ats"
         ]
       },
       {
         "group": "Admin",
         "icon": "Wrench",
         "pages": [
-          "admin/settings"
+          "admin/roles"
         ]
       }
     ]
