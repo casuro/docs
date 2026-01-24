@@ -48,6 +48,14 @@
             ]
           },
           {
+            "group": "Greenhouse",
+            "expanded": false,
+            "pages": [
+              "integrations/greenhouse/setup",
+              "integrations/greenhouse/assessments"
+            ]
+          },
+          {
             "group": "Lever",
             "expanded": false,
             "pages": [
