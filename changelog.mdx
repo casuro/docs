@@ -4,12 +4,13 @@ description: "Product updates and announcements"
 rss: true
 ---
 
-<Update label="May 12, 2026" description="V0.33.0">
+<Update label="May 12, 2026" description="V0.33.1">
 - 🐛 **Right org in invitation emails** — candidate invitations now always show the org that owns the launchpad, not whichever org the launcher happened to be looking at
 - 🎙 **More resilient AI interviews** — A360 AI calls no longer crash on a voice-id mismatch; the agent now keeps separate voices for the Gemini Realtime and Gradium TTS paths with a safe fallback to "Aoede"
 - 🔖 **A360 assessments remember progress** — refreshing the page mid-assessment now resumes on the first un-answered question instead of restarting; hitting the red End Call button on an AI-call question marks it done immediately
 - 🔁 **AI calls survive rejoin** — candidates rejoining a stale assessment after their LiveKit room was auto-cleaned no longer drop into a metadata-less room; room metadata is re-asserted on every join
 - 🖼️ **Cover image on public job board** — embedded job boards can now display the org's branded cover image alongside name and logo
+- 🩹 **No more stuck "Loading Assessment"** — fixed a regression where the resume-on-refresh init could leave the candidate page on the loading spinner if any of the underlying queries hadn't resolved yet
 </Update>
 
 <Update label="May 11, 2026" description="V0.32.0">
