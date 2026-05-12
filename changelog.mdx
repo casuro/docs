@@ -4,6 +4,12 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="May 12, 2026" description="V0.33.2">
+- 🎨 **Brand background color** — branding settings now includes a Background color alongside Primary, Secondary, and Accent. The color drives the social-card preview on job posts and the public job-board OG image on jobs.casuro.ai
+- 🔁 **AI evaluation retries on transcript races** — A360 evaluations no longer fail with "questions still need transcription" when an AI-call's transcript hasn't quite landed; the workflow now retries with a longer budget while the transcript pipeline catches up
+- 🧹 **Assessments page cleanup** — removed the legacy "Create with AI" prompt box; assessment creation flows through the existing templates gallery and job-posting paths
+</Update>
+
 <Update label="May 12, 2026" description="V0.33.1">
 - 🩹 **No more stuck "Loading Assessment"** — fixed a regression where the resume-on-refresh init could leave the candidate page on the loading spinner if any of the underlying queries hadn't resolved yet
 </Update>
