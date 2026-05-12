@@ -4,6 +4,10 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="May 12, 2026" description="V0.33.3">
+- 🎨 **Brand background color now reaches the public OG card** — followup to V0.33.2: the public job-board HTTP endpoints (`/posting-api` and `jobPosting.info`) now forward the full org brand palette (`brandPrimaryColor`, `brandAccentColor`, `brandBackgroundColor`, `brandLogoBackground`) instead of dropping all of them. Both the careers-page OG image and the per-job OG image on jobs.casuro.ai now render with the org's picked background
+</Update>
+
 <Update label="May 12, 2026" description="V0.33.2">
 - 🎨 **Brand background color** — branding settings now includes a Background color alongside Primary, Secondary, and Accent. The color drives the social-card preview on job posts and the public job-board OG image on jobs.casuro.ai
 - 🔁 **AI evaluation retries on transcript races** — A360 evaluations no longer fail with "questions still need transcription" when an AI-call's transcript hasn't quite landed; the workflow now retries with a longer budget while the transcript pipeline catches up
