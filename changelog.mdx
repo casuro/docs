@@ -4,6 +4,13 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="May 11, 2026" description="V0.32.0">
+- 📭 **Closed job postings stay live** — jobs marked Closed or Paused keep their public page reachable instead of 404'ing. Candidates see a polite "Applications for this role are now closed" notice with a "View open roles" CTA back to the org's careers page
+- 🚫 **API rejects applications to closed roles** — submission API returns HTTP 410 with `error.code: "JOB_CLOSED"` when a candidate or integration submits to a Closed or Paused job
+- 📄 **Applications list paginates + filters by job** — the Applications page now loads 10 at a time with a "Load more" button (server-side pagination) and a filter icon in the "Job" column that lists only jobs with at least one application
+- ⏰ **Hourly recurring research** — added "Hourly" option to research interval presets alongside Daily and Weekly
+</Update>
+
 <Update label="May 8, 2026" description="V0.31.1">
 - ⏱️ **Longer persona sessions** — AI persona guides now have 5-minute sessions (up from 2 minutes) for more in-depth voice interactions
 </Update>
