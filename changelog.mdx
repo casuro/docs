@@ -4,6 +4,16 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="May 14, 2026" description="V0.33.7">
+- 🧹 **Cleaner challenges table** — removed the redundant Actions column; the three-dot row menu remains for all per-row actions
+- 🎨 **Friendlier candidate avatars** — candidates without a profile photo now render a deterministic nice-avatar (matching the Applications page) on the challenges table and the launchpad Invite tab's recent activity table
+- 🔎 **Server-side filtering on All Challenges** — Challenge, Step, and Status columns now have dropdown filters backed by Convex queries, mirroring the Applications page jobs-filter pattern. Status filter includes Pending, In Progress, Submitted, Completed, Failed, and Expired
+- 🪧 **Expired status surfaces in rows** — steps whose deadline has passed now display as Expired (orange) instead of falling back to Pending; terminal states (Completed, Failed) are preserved verbatim
+- 📊 **Stat cards generalize across challenge types** — In Progress, Completion Rate, and Abandonment Rate now reflect both Case Study and A360 challenges (previously hard-coded to the case step, so A360 challenges never contributed to the metrics)
+- 🎯 **Consistent solid status badges** — both the All Challenges table and the launchpad Invite recent-activity table now share the same solid-fill badge palette (yellow/dark for Pending, blue/white for In Progress, green/white for Submitted+Completed, orange/white for Failed+Expired)
+- 🧭 **Challenge type icons in the row** — case-study rows show a 📖 book icon and A360 rows show a ⚡ zap icon next to the title, matching the icons used on /assessments
+</Update>
+
 <Update label="May 13, 2026" description="V0.33.6">
 - 🪄 **A360 panel changes reach the launchpad** — editing panel lead or panel members from the A360 editor's Manage Panel drawer now updates the launchpad and propagates to every issued challenge (previously the change only landed on the rubric, so the launchpad and active challenges kept the old panel)
 - 🩹 **Evaluate from the challenges page works for A360** — the three-dot menu's evaluate option on the challenges page now actually fires the A360 AI evaluation workflow (transcription + scoring) for A360 rows, matching the launchpad's Evaluate behavior; case-study rows still open the manual scoring page
