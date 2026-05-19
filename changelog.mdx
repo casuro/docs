@@ -4,6 +4,10 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="May 19, 2026" description="V0.33.11">
+- 📞 **Candidate phone in the challenge Manage modal hero** — the Profile chip row (name + status, Email, Job title) now also shows a Phone chip when the candidate filled in a phone number on the jobs.casuro.ai application form. Joins `jobApplications` by `(email lowercased, jobId)` via the existing `by_email_job` index and exposes `phone` on `candidateUser` from `challenges.crud.read:getById`. Chip is hidden for candidates without a phone (optional field) and for ATS-synced candidates whose challenge has no `jobApplications` row
+</Update>
+
 <Update label="May 18, 2026" description="V0.33.10">
 - 🤖 **Assessments AI Agent in the sidebar** — the static "Create with AI" button on `/assessments` is replaced by an Anam-powered talking avatar. Click the preview to start a voice conversation; the agent can type your assessment prompt into the Quick Create box and trigger the Quick Create flow on your confirmation. Distinguishes case studies from A360 interviews via the prompt text (the existing `detectType` regex still picks the right path). New `fill_assessment_prompt` and `submit_assessment_quick_create` client tools live on the persona, with a tailored system prompt that walks the agent through asking for the role, confirming, typing it in, and asking before submitting
 - 🧹 **Per-agent Anam components** — each avatar (Research, Jobs, Assessments, Video Calls) now lives in its own `src/components/anam/*Agent.tsx` file owning its persona ID, preview image, labels, and tool handlers. `app-sidebar.tsx` just renders `<JobsAgent />` etc. and shrank by ~115 lines. Internal naming changed from "Guide" to "Agent" to match how these are described in the UI
