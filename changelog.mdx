@@ -4,6 +4,12 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="May 20, 2026" description="V0.34.0">
+- ✂️ **Tiptap editor slimmed down for the Start-plan downgrade** — the case and JD editors no longer ship the three paid Tiptap extensions that aren't included in Tiptap's Start plan: AI Agent (the conversational "Agent" sidebar tab), AI Suggestion (the grammar/spelling "Hints" tab), and AI Changes (the accept/reject decorations layered on top of AI Moodify). Real-time collaboration, threaded comments, cursors/presence, and tab-autocomplete via `@tiptap-pro/extension-ai` all stay — those are on Start. Cuts our Tiptap bill roughly in half once the plan is switched
+- 🧹 **AI Moodify dropdown retired** — the toolbar's "AI Moodify" button (Bloggify / Emojify / Rephrase / Summarize / TLDR / etc.) is gone along with its leading separator. It depended on the AI Changes decorations to feel safe, and without those it was a one-click destructive replace. The underlying `@tiptap-pro/extension-ai` is still loaded so Tab-autocomplete and `useAIGeneration` / `useAIGenerationJD` (the initial AI generation flow for new cases + job descriptions) keep working
+- 🗑 **Sidebar tab cleanup** — removed the "Agent" + "Hints" tabs from the case side panel (default tab is now "Manage") and the "Agent" tab from the JD side panel. 14 component files deleted: `ai-agent-chat`, `ai-suggestions-panel`, `rules-management-modal`, `suggestion-tooltip`, `AIChatPlaceholder`, `ai-agent-context`, `user-message-context`, `use-ai-agent`, `initial-ai-rules`, `ai-suggestions.css`, plus per-editor `review-change-popover` + `ai-changes.css` in cases and jobs. `useEditorStore` lost its `aiAgentProvider` slot. 3 npm packages removed: `@tiptap-pro/extension-ai-agent`, `@tiptap-pro/extension-ai-changes`, `@tiptap-pro/extension-ai-suggestion`
+</Update>
+
 <Update label="May 19, 2026" description="V0.33.11">
 - 📞 **Candidate phone in the challenge Manage modal hero** — the Profile chip row (name + status, Email, Job title) now also shows a Phone chip when the candidate filled in a phone number on the jobs.casuro.ai application form. Joins `jobApplications` by `(email lowercased, jobId)` via the existing `by_email_job` index and exposes `phone` on `candidateUser` from `challenges.crud.read:getById`. Chip is hidden for candidates without a phone (optional field) and for ATS-synced candidates whose challenge has no `jobApplications` row
 </Update>
