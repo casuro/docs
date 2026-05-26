@@ -4,14 +4,34 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="May 19, 2026" description="V0.33.11">
+- 📞 **Candidate phone in the challenge Manage modal hero** — the Profile chip row (name + status, Email, Job title) now also shows a Phone chip when the candidate filled in a phone number on the jobs.casuro.ai application form. Joins `jobApplications` by `(email lowercased, jobId)` via the existing `by_email_job` index and exposes `phone` on `candidateUser` from `challenges.crud.read:getById`. Chip is hidden for candidates without a phone (optional field) and for ATS-synced candidates whose challenge has no `jobApplications` row
+</Update>
+
+<Update label="May 18, 2026" description="V0.33.10">
+- 🤖 **Assessments AI Agent in the sidebar** — the static "Create with AI" button on `/assessments` is replaced by an Anam-powered talking avatar. Click the preview to start a voice conversation; the agent can type your assessment prompt into the Quick Create box and trigger the Quick Create flow on your confirmation. Distinguishes case studies from A360 interviews via the prompt text (the existing `detectType` regex still picks the right path). New `fill_assessment_prompt` and `submit_assessment_quick_create` client tools live on the persona, with a tailored system prompt that walks the agent through asking for the role, confirming, typing it in, and asking before submitting
+- 🧹 **Per-agent Anam components** — each avatar (Research, Jobs, Assessments, Video Calls) now lives in its own `src/components/anam/*Agent.tsx` file owning its persona ID, preview image, labels, and tool handlers. `app-sidebar.tsx` just renders `<JobsAgent />` etc. and shrank by ~115 lines. Internal naming changed from "Guide" to "Agent" to match how these are described in the UI
+</Update>
+
+<Update label="May 15, 2026" description="V0.33.9">
+- 📊 **Activity timeline on the Manage modal** — replaces the prior Profile tab with a per-candidate timeline. For a360 challenges, one event per question with status (Answered / Silent / Disconnected / In progress / Not started), persona, recording duration, transcript preview, attempt count, and a recording affordance — surfaces zombie ai_calls (`status: "active"` after agent disconnect), silent recordings (transcriptionConfidence 0), and stuck candidates inline. For case_study and everything else, the same timeline rendered from `challenge.steps` (case / interview / evaluation / decision), surfacing failed evaluation steps with their inline error message. Vertical spine + tabular timestamps + uppercase ASKED / SAID / META micro-labels so the events read like a chronological log
+- 🪟 **Click candidate cards or rows to open the full detail in a modal** — pipeline board (`/jobs/[id]/pipeline`) and the All Applications table (`/applications`) no longer route to `/applications/[id]`. Both surfaces open the same body inside a 4xl modal overlay, so staff stay in the list / kanban context while triaging. The standalone route still works for direct links and bookmarks. Behind the scenes the body was extracted to `src/components/application/` so it can be embedded anywhere
+- ✅ **A360 evaluation retries actually engage on transcript races** — followup to V0.33.2. The action's outer `catch` was swallowing the transcription-readiness throw, so `step.runAction`'s 5 × exp-backoff (~45s) retry budget never fired and the workflow failed in ~80ms when an AI-call's transcript hadn't quite landed (LiveKit egress → STT → saveTranscript typically takes 5–15s). Introduced a `TranscriptionNotReadyError` sentinel and re-raise it from the catch so the retry does what the original V0.33.2 commit message claimed. Also moved the workflow's `✅ AI evaluation complete` log inside the success branch so failure runs no longer print a misleading success line
+</Update>
+
+<Update label="May 15, 2026" description="V0.33.8">
+- ⏰ **Manage modal on every challenge row** — three-dot menu now has a Manage option that opens a sidebar-style modal (mirroring Manage Organization). First page is Deadline: pick a new date + time and the active step's `dueAt` plus the challenge-level fallback get patched, the step's `slaAt` is recomputed from the template's SLA offset, and for an in-progress case study the candidate's countdown (`metadata.effectiveDeadline`) and the auto-complete scheduler are both shifted to the new cutoff. Works for both case_study (case step) and a360 (interview step)
+- 🩹 **Candidate signups no longer crash with a client-side exception** — the Clerk `user.created` webhook handler was calling `api.users.syncUserFromClerk`, a path that disappeared in the major Convex refactor. New candidates landed on `app.casuro.ai` without a Convex `users` row, which surfaced as the generic "Application error" on first load. Fixed the webhook to call `api.core.users.main.syncUserFromClerk` (and also fixed two adjacent stale paths: the Merge `LinkedAccount.sync_completed` legacy ATS user sync and the public `/templates/public` HTTP endpoint)
+- 🎚 **Multi-select status filter on All Challenges** — the Status column filter is now a popover with checkboxes, Apply / Clear, and staged selections so checkbox clicks don't trigger a refetch each time; the table also no longer flashes the empty state while filters are reloading
+</Update>
+
 <Update label="May 14, 2026" description="V0.33.7">
-- 🧹 **Cleaner challenges table** — removed the redundant Actions column; the three-dot row menu remains for all per-row actions
-- 🎨 **Friendlier candidate avatars** — candidates without a profile photo now render a deterministic nice-avatar (matching the Applications page) on the challenges table and the launchpad Invite tab's recent activity table
-- 🔎 **Server-side filtering on All Challenges** — Challenge, Step, and Status columns now have dropdown filters backed by Convex queries, mirroring the Applications page jobs-filter pattern. Status filter includes Pending, In Progress, Submitted, Completed, Failed, and Expired
-- 🪧 **Expired status surfaces in rows** — steps whose deadline has passed now display as Expired (orange) instead of falling back to Pending; terminal states (Completed, Failed) are preserved verbatim
-- 📊 **Stat cards generalize across challenge types** — In Progress, Completion Rate, and Abandonment Rate now reflect both Case Study and A360 challenges (previously hard-coded to the case step, so A360 challenges never contributed to the metrics)
-- 🎯 **Consistent solid status badges** — both the All Challenges table and the launchpad Invite recent-activity table now share the same solid-fill badge palette (yellow/dark for Pending, blue/white for In Progress, green/white for Submitted+Completed, orange/white for Failed+Expired)
-- 🧭 **Challenge type icons in the row** — case-study rows show a 📖 book icon and A360 rows show a ⚡ zap icon next to the title, matching the icons used on /assessments
+- 🧹 **Tighter All Challenges table** — removed the redundant Actions column; the three-dot menu in the rightmost cell already covers it
+- 🧑 **NiceAvatar fallback for candidates without profile photos** — challenges row + launchpad Invite recent table now show a stable seeded avatar instead of a blank circle; extracted shared `getAvatarColor` helper to `src/lib/avatar.ts` and deduped across applications/jobs pages
+- 🔎 **Server-side filtering on the challenges table** — challenge title, current step, and current step status now filter on the server, with `getChallengeTitlesForFilter` + `getChallengeStepsForFilter` queries feeding the filter dropdowns
+- ⏱ **"Expired" stepStatus is synthesized** — non-terminal steps whose `dueAt` has passed now report `expired` to both the row badge and the status filter, instead of staying as `pending` or `in_progress`
+- 📊 **Stat cards generalize across challenge types** — In Progress, Completion Rate, and Abandonment Rate no longer assume the legacy case-step status; the analytics now use the cross-type `getChallengeStatus` helper that inspects every step
+- 🎨 **Consistent solid status-badge palette + leading icons** — All Challenges table and launchpad Invite recent-activity table share one palette, and challenge titles get a leading 📖 (case_study) or ⚡ (a360) icon to match the /assessments rows
 </Update>
 
 <Update label="May 13, 2026" description="V0.33.6">
