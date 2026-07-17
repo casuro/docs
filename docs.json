@@ -44,6 +44,7 @@
             "expanded": false,
             "pages": [
               "integrations/ashby/setup",
+              "integrations/ashby/vocal-pages",
               "integrations/ashby/tips-tricks"
             ]
           },
