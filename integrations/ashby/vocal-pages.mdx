@@ -1,0 +1,151 @@
+---
+title: 'Vocal Pages'
+description: 'Turn your Ashby job postings into voice-agent career pages with casuro.ai'
+---
+
+<Callout icon="microphone" color="#7ECBD9" iconType="regular">
+Vocal Pages turn your published Ashby job postings into interactive, voice-agent career pages. Candidates talk to your agent, answer screening questions, and apply - and everything flows back into Ashby.
+</Callout>
+
+## How it works
+
+Casuro mirrors your **published Ashby job postings** onto a public, voice-enabled career page. A candidate opens the page, has a short conversation with your voice agent, answers your screening questions, and submits an application. Casuro then pushes the application, answers, and screening result back into Ashby - so your recruiters keep working entirely inside Ashby.
+
+<Info>
+Vocal Pages are separate from the Ashby **assessments** integration. You can use either or both. This guide covers Vocal Pages only. For assessments, see [Setup](/integrations/ashby/setup).
+</Info>
+
+## Before you start
+
+- **Admin access** in both Ashby and casuro.ai.
+- At least one **published** job posting in Ashby (draft postings are not mirrored).
+
+## Step by step guide
+
+<Steps>
+
+{/* Step 1 */}
+<Step title="Enable the Casuro jobs integration in Ashby">
+
+In Ashby, go to **Admin → Integrations**, find the **Casuro jobs** integration, and enable it. Ashby issues the API key you need right there.
+
+<Callout icon="triangle-exclamation" color="#FD4B22" iconType="regular">
+The key must come from the **Casuro jobs integration**, not from Ashby's generic **Admin → API keys** page. The integration key carries the scopes Casuro needs.
+</Callout>
+
+The key needs these scopes:
+
+| Scope | Why |
+| --- | --- |
+| `jobs:read` | Read your job postings to mirror them onto the vocal page |
+| `candidates:write` | Push applications and screening results back into Ashby |
+| `apiKeys:write` | Register the sync webhooks automatically on connect |
+
+</Step>
+
+{/* Step 2 */}
+<Step title="Open the Vocal Pages tab in casuro.ai">
+
+In casuro.ai, go to **Admin → Integrations** and open the **Vocal Pages** tab. Click **Connect** on the Ashby card.
+
+</Step>
+
+{/* Step 3 */}
+<Step title="Paste your API key and connect">
+
+Paste the API key from Step 1 and click **Validate**. Casuro checks that all three scopes are present, then lets you **Connect**.
+
+On connect, Casuro automatically:
+
+- Registers the sync webhooks in Ashby (`jobPostingPublish`, `jobPostingUnpublish`, `jobPostingUpdate`, `jobPostingDelete`).
+- Runs an initial backfill so your currently-published postings appear right away.
+
+<Note>
+Webhooks register automatically - there is no manual webhook setup. In Ashby they appear marked as `casuro-vocal-pages`. If webhook registration ever fails, your pages still sync on an hourly schedule.
+</Note>
+
+</Step>
+
+{/* Step 4 */}
+<Step title="Configure your voice agent">
+
+Go to **Admin → Vocal** to brand the candidate-facing page. You get a live preview as you edit:
+
+- **Agent name** - what the voice agent calls itself (default `Casuro`).
+- **Aura color** - the animated aura around the agent.
+- **Button color** - the primary call-to-action color.
+- **Cover image** - the banner on the job card.
+- **Social card** - the preview image shown when a page link is shared.
+
+Defaults are inherited from your organization's brand settings, so you can leave any field untouched.
+
+</Step>
+
+{/* Step 5 */}
+<Step title="Choose your evaluation mode">
+
+Still on **Admin → Vocal**, pick how screening answers are handled:
+
+- **Evaluate** (default) - the agent asks your screening questions and Casuro grades each answer against pre-committed criteria, bucketing candidates (fast-track / knockout) and writing a result note back to Ashby.
+- **Gather only** - the agent still asks the questions and records the answers, but nothing is graded or scored. Use this when you only want to collect information.
+
+<Info>
+This setting is organization-wide and applies to every vocal page.
+</Info>
+
+</Step>
+
+{/* Step 6 */}
+<Step title="Author screening questions (optional)">
+
+Open a job in the editor to tailor its screening. Add **questions** or **prompts**; when you turn an item on, Casuro auto-generates grading **criteria** (meets / partial / fails) that you can edit and save. Grading is **blinded** - the model sees only the question, criteria, and answer, never the candidate's identity - to keep it unbiased.
+
+If you are in **Gather only** mode, criteria are ignored and answers are simply recorded.
+
+</Step>
+
+{/* Step 7 */}
+<Step title="Publish a posting - and you are live 🎉">
+
+Publish (list) a job posting in Ashby. It appears on your vocal page within seconds via webhook (or within the hour via the fallback sync). Share the page link, and candidates can start applying by voice right away.
+
+</Step>
+
+</Steps>
+
+## Keeping pages in sync
+
+Once connected, your vocal pages track Ashby automatically:
+
+| In Ashby | On your vocal page |
+| --- | --- |
+| Publish / list a posting | Page appears |
+| Edit a posting | Page updates |
+| Unpublish a posting | Page is removed |
+| Delete a posting | Page is removed |
+
+Real-time updates arrive over webhooks. As a safety net, Casuro also reconciles every hour, so a missed webhook self-heals on the next pass.
+
+## Managing the connection
+
+The **Vocal Pages** tab shows the live status of your connection:
+
+- Whether real-time webhooks are active (or falling back to hourly sync).
+- A **Sync now** action to force an immediate reconcile.
+- Integration logs for troubleshooting.
+
+**Disconnecting** removes the webhooks from Ashby and stops mirroring new posting changes. Applications and candidate data already collected are kept.
+
+## Troubleshooting
+
+<Note>
+**Validation says a scope is missing.** Re-open the **Casuro jobs** integration in Ashby (Admin → Integrations) and make sure it is enabled, then copy the key again. The key must include `jobs:read`, `candidates:write`, and `apiKeys:write`.
+</Note>
+
+<Note>
+**Status shows "syncing hourly" instead of real-time webhooks.** Webhook registration needs the `apiKeys:write` scope. Confirm the scope is present, then use **Disconnect** and reconnect to re-register. Until webhooks are active, pages still sync every hour.
+</Note>
+
+<Note>
+**A posting is not showing up.** Only **published** postings are mirrored - a draft posting will not appear. If it is published, use **Sync now**, or wait for the next hourly reconcile.
+</Note>
