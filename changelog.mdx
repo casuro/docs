@@ -4,6 +4,11 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="July 30, 2026" description="V0.46.3">
+- 💄 **Redesigned the Create Organization modal** - the super-admin "Create organization" dialog drops the labeled logo / name / slug stack (and the native "Browse… No file selected" control) for a minimal single-row layout: a square logo tile with a pencil edit button, a borderless autofocused organization name, and a small editable slug pill that auto-derives from the name until you change it
+- 🔧 **Restored `bun lint`** - linting had been fully broken since the Next 16 upgrade (Next dropped the `next lint` command and `eslint-config-next` was stuck at 14.1.0 while the config referenced `next/typescript`). The project lints again via a native `eslint-config-next` 16 flat config and an `eslint .` script
+</Update>
+
 <Update label="May 25, 2026" description="V0.35.0">
 - 📱 **SMS opt-in consent on job applications** — candidates applying through `jobs.casuro.ai` now see an explicit, unchecked, TCPA-style consent checkbox under the phone field with the carrier-required disclosure ("recurring automated text messages from Casuro... Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to unsubscribe. Consent is not a condition of applying."). The checkbox only renders when the job's application form has a phone field; submission is never blocked by an unchecked box. Consent state, server-side timestamp, and source are persisted on `jobApplications` (new optional `smsConsent` / `smsConsentAt` / `smsConsentSource` columns) so any future SMS sender can gate on `smsConsent === true`. Sets the foundation for sending candidates assessment invitations, interview reminders, deadlines, and next-step updates via SMS
 - 🎨 **Brand-colored buttons auto-pick readable text color** — every button on `jobs.casuro.ai` that paints itself with an org's brand color (application Submit, "View open roles" on closed jobs, the three voice-agent CTAs) now derives its text color from the background luminance. Light brand colors get `casuro-dark` text; dark brand colors keep white. Removes the failure mode where a yellow or pastel brand color rendered with invisible white text
