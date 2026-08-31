@@ -4,6 +4,12 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="Aug 31, 2026" description="V0.53.0">
+- 🎯 **More honest AI interview evaluations** - if an AI interview evaluation can't finish scoring after repeated attempts, it now shows as a failed run instead of silently filling in a default middle-of-the-road score for every criterion. You'll always be able to tell a completed evaluation from one that needs a retry
+- 🏛️ **Agentic evaluation foundation (not yet enabled)** - this release lands the backend and UI for a multi-agent evaluation system ("Boardroom") that reviews candidate submissions with a live, explainable multi-agent thread, per-case grading playbooks, and a consistent scorecard layout across every candidate. It ships fully behind a deployment-level flag and is not turned on for any organization yet - a future changelog entry will cover it once it's live
+- 🩹 **Tighter spacing on the challenge action row** - the "Upload a file" and "Update" controls on the case view no longer crowd each other
+</Update>
+
 <Update label="May 25, 2026" description="V0.35.0">
 - 📱 **SMS opt-in consent on job applications** — candidates applying through `jobs.casuro.ai` now see an explicit, unchecked, TCPA-style consent checkbox under the phone field with the carrier-required disclosure ("recurring automated text messages from Casuro... Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to unsubscribe. Consent is not a condition of applying."). The checkbox only renders when the job's application form has a phone field; submission is never blocked by an unchecked box. Consent state, server-side timestamp, and source are persisted on `jobApplications` (new optional `smsConsent` / `smsConsentAt` / `smsConsentSource` columns) so any future SMS sender can gate on `smsConsent === true`. Sets the foundation for sending candidates assessment invitations, interview reminders, deadlines, and next-step updates via SMS
 - 🎨 **Brand-colored buttons auto-pick readable text color** — every button on `jobs.casuro.ai` that paints itself with an org's brand color (application Submit, "View open roles" on closed jobs, the three voice-agent CTAs) now derives its text color from the background luminance. Light brand colors get `casuro-dark` text; dark brand colors keep white. Removes the failure mode where a yellow or pastel brand color rendered with invisible white text
