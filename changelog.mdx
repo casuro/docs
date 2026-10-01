@@ -4,6 +4,12 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="October 1, 2026" description="V0.60.1">
+- 🎛️ **Model pickers now match what your organization allows** - fixed a mismatch where the episode builder, sub-agents, AI candidates, the evaluation panel and the candidate assistant could each show a different model list than the one your organization's admin set up. They now all show the same organization-allowed models. If something was pinned to a model your organization has since turned off, it now runs on that role's default instead of silently staying on an unavailable model.
+- 🏁 **Launch no longer leaves AI candidates stuck** - fixed candidates getting stuck at "Getting ready..." forever when you pressed Launch. AI candidates now only start when you start them from the candidate's card, and you can always stop a running one.
+- 🖥️ **Tidier app icons in the Dock** - app launcher icons the builder creates now sit cleanly on the Dock's glass tile.
+</Update>
+
 <Update label="September 30, 2026" description="V0.60.0">
 - 💬 **Talk to your builder and mates while they work** - no more waiting for a run to finish before you can steer it. Send a correction or an extra request at any time; the builder or mate picks it up at its next step without stopping, and your message shows in the conversation right where it was read.
 - 🔔 **Mate routines you can count on** - scheduled routines now arrive reliably and exactly once, even when a connection hiccups, and Telegram messages go only to your private chat. Unlinking Telegram stops them straight away.
