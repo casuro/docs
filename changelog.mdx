@@ -4,6 +4,11 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="October 16, 2026" description="V0.61.6">
+- 🔌 **Mates work on every model again** - a mate with several plugins connected no longer fails on OpenAI and Azure models. Each plugin now adds only its core tools, the mate searches for and runs any other plugin tool it needs, and a hard per-provider cap means a turn can never fail for carrying too many tools.
+- 🧊 **WebGL in the mate's browser** - a mate's Chrome can now render WebGL pages on its virtual desktop: 3D graphics, maps and some verification widgets that failed to load before now work. Existing mates pick this up on their next browser action after one restart of their Chrome; open tabs close, logins stay.
+</Update>
+
 <Update label="October 16, 2026" description="V0.61.5">
 - 🚦 **Slack timelines no longer show false warnings** - a mate's step timeline in Slack no longer marks a step with a red warning when its reply actually succeeds. A browser step that hit a bump along the way (a page that changed, a search that got blocked) now shows as done, with the reason kept as a note underneath it, and the final "Thinking" step always closes properly before the message finishes. A red mark now only appears when the mate genuinely could not finish its reply.
 </Update>
