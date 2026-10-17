@@ -4,6 +4,73 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="October 16, 2026" description="V0.61.6">
+- 🔌 **Mates work on every model again** - a mate with several plugins connected no longer fails on OpenAI and Azure models. Each plugin now adds only its core tools, the mate searches for and runs any other plugin tool it needs, and a hard per-provider cap means a turn can never fail for carrying too many tools.
+- 🧊 **WebGL in the mate's browser** - a mate's Chrome can now render WebGL pages on its virtual desktop: 3D graphics, maps and some verification widgets that failed to load before now work. Existing mates pick this up on their next browser action after one restart of their Chrome; open tabs close, logins stay.
+- 💻 **Smaller, faster mate computers** - mates' computers now run on a smaller, cheaper machine (2 CPU / 4 GB instead of 8 / 8), and a brand-new computer no longer takes over two minutes to open its first page; it is now faster than before.
+</Update>
+
+<Update label="October 16, 2026" description="V0.61.5">
+- 🚦 **Slack timelines no longer show false warnings** - a mate's step timeline in Slack no longer marks a step with a red warning when its reply actually succeeds. A browser step that hit a bump along the way (a page that changed, a search that got blocked) now shows as done, with the reason kept as a note underneath it, and the final "Thinking" step always closes properly before the message finishes. A red mark now only appears when the mate genuinely could not finish its reply.
+</Update>
+
+<Update label="October 4, 2026" description="V0.61.3">
+- 🎥 **AI candidate replays show real screenshots** - replay frames are now real screenshots of the browser Casuro runs for the candidate, instead of frames rebuilt from the page, so they no longer miss the app windows a rebuild could miss. The run also keeps going if you close the builder tab.
+- 🏃 **Live AI candidate runs on their card** - a running candidate's card shows the run live; click it to open the run at full size. The card is simpler now: face, name, model, a Run button and a gear menu, with the rest in an info hover.
+- 📋 **A Runs table under your candidates** - lists every run with its progress, status and an Evaluate button, five at a time.
+- 🔀 **Run several AI candidates at once** - up to 5 at a time on an episode, instead of one.
+- 🧭 **Quieter builder header** - no notification bell in the builder, a compact Team button, and the same header height whether the sidebar is open or closed.
+- 🔎 **Jump to another assessment from the breadcrumb** - the ">" in "Assessments > episode" now opens a searchable list to switch assessments.
+- 📄 **Episodes tab pages five at a time** - matches how Cases already loads.
+</Update>
+
+<Update label="October 1, 2026" description="V0.60.5">
+- 🤐 **Personas skip replies a message does not need** - in simulation episodes, a persona no longer sends a reply to a bare "ok", "thanks" or emoji that needs no answer, so chat threads read less like a bot acknowledging itself. A question, a request or anything still pending still always gets a reply. Episodes can also now make up to 100 AI calls instead of 40.
+- 🏷️ **Episode builder: a world tag on the navbar, Launch without the sidebar** - the episode navbar now tags the world a simulation belongs to beside its name, and the sidebar closes automatically while the Launch step is building, then reopens when you leave it.
+- 🧹 **Tidier builder sidebar** - the resize strip no longer shows while the sidebar is collapsed.
+- 📜 **Long simulation sessions no longer hit a read limit** - evaluation, judging, cohorts and the session log now read a long run's events in pages, so a run with thousands of events no longer fails partway through. The session log, evidence pack and human-judge trail now load once instead of updating live.
+</Update>
+
+<Update label="October 1, 2026" description="V0.60.2">
+- 🐙 **GitHub in episodes** - scenes can now happen in GitHub: pull requests, Actions runs and the job log, a ready-made app the builder can put into any episode.
+</Update>
+
+<Update label="October 1, 2026" description="V0.60.1">
+- 🎛️ **Model pickers now match what your organization allows** - fixed a mismatch where the episode builder, sub-agents, AI candidates, the evaluation panel and the candidate assistant could each show a different model list than the one your organization's admin set up. They now all show the same organization-allowed models. If something was pinned to a model your organization has since turned off, it now runs on that role's default instead of silently staying on an unavailable model.
+- 🏁 **Launch no longer leaves AI candidates stuck** - fixed candidates getting stuck at "Getting ready..." forever when you pressed Launch. AI candidates now only start when you start them from the candidate's card, and you can always stop a running one.
+- 🖥️ **Tidier app icons in the Dock** - app launcher icons the builder creates now sit cleanly on the Dock's glass tile.
+</Update>
+
+<Update label="September 30, 2026" description="V0.60.0">
+- 💬 **Talk to your builder and mates while they work** - no more waiting for a run to finish before you can steer it. Send a correction or an extra request at any time; the builder or mate picks it up at its next step without stopping, and your message shows in the conversation right where it was read.
+- 🔔 **Mate routines you can count on** - scheduled routines now arrive reliably and exactly once, even when a connection hiccups, and Telegram messages go only to your private chat. Unlinking Telegram stops them straight away.
+- 🔌 **Sturdier plugin connections** - connecting a mate plugin is more secure, and a plugin you remove stays removed.
+- 📏 **Tidier episode setup** - the description box in New episode grows to a comfortable size, then scrolls, so the buttons always stay in view.
+</Update>
+
+<Update label="September 29, 2026" description="V0.59.3">
+- 🧵 **Long builds keep going** - big, many-app episodes no longer stall partway through a long build session; the builder keeps its working memory compact so every step gets an answer.
+</Update>
+
+<Update label="September 29, 2026" description="V0.59.2">
+- 🗄️ **Supabase in episodes** - scenes can now happen in Supabase Studio: browse and edit tables in the Table Editor and run queries in the SQL Editor, great for data and backend roles.
+- 🚨 **PagerDuty in episodes** - put candidates on call: incidents arrive, and they acknowledge, resolve, reassign and add notes just as they would in PagerDuty.
+</Update>
+
+<Update label="September 29, 2026" description="V0.59.1">
+- ⚡ **Apps in an episode are built side by side** - when your episode spans several apps, the builder can start a helper for every app at once and put the episode together when they are all done.
+- 🧰 **Quicker, more faithful app scenes** - the builder now knows each ready-made app inside out before it starts, so it spends less time studying an app and more time on your story.
+- 🔌 **Builds keep going through network blips** - a dropped connection no longer stops the builder mid-build and waits for you to send another message.
+- 🍎 **Tidier macOS Dock** - app icons in an episode's Dock sit on a white rounded tile, just like the Mac's own.
+</Update>
+
+<Update label="September 28, 2026" description="V0.59.0">
+- 🧩 **Episodes use real-looking apps** - when a scene happens in Slack, Gmail, Outlook, Teams, Zoom, Google Meet, Google Calendar, Calendly, Jira, Linear, Notion, Confluence, Google Docs, Zendesk, Intercom, Greenhouse, Datadog, ChatGPT, Claude Code or WhatsApp, the builder uses Casuro's ready-made version of that app and adapts it to your story, instead of drawing one from scratch.
+- 🖥️ **Multi-app episodes run on a desktop** - an episode across several apps now happens on a macOS, Windows 11 or Ubuntu desktop, each app in its own window, and turns into a phone layout on small screens.
+- ⚡ **Faster multi-app builds** - the builder hands each app to its own helper and builds them at the same time, then puts the episode together.
+- 👀 **See your builder's helpers at work** - the live progress of each helper now shows on the episode it is building.
+</Update>
+
 <Update label="May 25, 2026" description="V0.35.0">
 - 📱 **SMS opt-in consent on job applications** — candidates applying through `jobs.casuro.ai` now see an explicit, unchecked, TCPA-style consent checkbox under the phone field with the carrier-required disclosure ("recurring automated text messages from Casuro... Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to unsubscribe. Consent is not a condition of applying."). The checkbox only renders when the job's application form has a phone field; submission is never blocked by an unchecked box. Consent state, server-side timestamp, and source are persisted on `jobApplications` (new optional `smsConsent` / `smsConsentAt` / `smsConsentSource` columns) so any future SMS sender can gate on `smsConsent === true`. Sets the foundation for sending candidates assessment invitations, interview reminders, deadlines, and next-step updates via SMS
 - 🎨 **Brand-colored buttons auto-pick readable text color** — every button on `jobs.casuro.ai` that paints itself with an org's brand color (application Submit, "View open roles" on closed jobs, the three voice-agent CTAs) now derives its text color from the background luminance. Light brand colors get `casuro-dark` text; dark brand colors keep white. Removes the failure mode where a yellow or pastel brand color rendered with invisible white text
