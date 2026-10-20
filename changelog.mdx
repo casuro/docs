@@ -4,6 +4,13 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="October 19, 2026" description="V0.61.7">
+- 🌐 **Mates read the web without their computer** - search and fetch a page directly in a couple of seconds, computer off, with no more Google blocking an automated browser.
+- 🛰️ **Long web jobs go to a hosted web agent** - for a long public job you do not need to watch, or a site that blocks the mate's own browser, a mate can hand it to TinyFish instead. Every run is capped at 40 steps and 5 minutes, draws credits like a model call, and an organization can spend up to 100 credits a day this way. Acting on a site you are signed in to still happens on the mate's own computer by default.
+- 🧹 **Removed the "run a whole goal" browser tool** - a mate now works through a site with its regular step-by-step browser tools, which held up better in testing than handing over a whole goal at once.
+- 💤 **Steadier mate computers** - a mate's computer no longer mistakes a busy moment for a missing package, and an idle mate's browser window now closes after 10 minutes so it stops using another mate's CPU.
+</Update>
+
 <Update label="October 16, 2026" description="V0.61.6">
 - 🔌 **Mates work on every model again** - a mate with several plugins connected no longer fails on OpenAI and Azure models. Each plugin now adds only its core tools, the mate searches for and runs any other plugin tool it needs, and a hard per-provider cap means a turn can never fail for carrying too many tools.
 - 🧊 **WebGL in the mate's browser** - a mate's Chrome can now render WebGL pages on its virtual desktop: 3D graphics, maps and some verification widgets that failed to load before now work. Existing mates pick this up on their next browser action after one restart of their Chrome; open tabs close, logins stay.
