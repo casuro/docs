@@ -4,6 +4,10 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="August 27, 2026" description="V0.50.0">
+- 📄 **Document deliverables are now actually read and scored** - case study file uploads (PDF, DOCX, and plain text) are extracted and evaluated against the rubric, with verbatim quotes from the document as evidence for each criterion instead of guesses from the filename alone. Scanned or image-only PDFs and other unreadable files are labeled honestly rather than scored blind. Rubric evaluations are also upgraded from GPT-4o to Claude Opus 5
+</Update>
+
 <Update label="July 30, 2026" description="V0.46.3">
 - 💄 **Redesigned the Create Organization modal** - the super-admin "Create organization" dialog drops the labeled logo / name / slug stack (and the native "Browse… No file selected" control) for a minimal single-row layout: a square logo tile with a pencil edit button, a borderless autofocused organization name, and a small editable slug pill that auto-derives from the name until you change it
 - 🔧 **Restored `bun lint`** - linting had been fully broken since the Next 16 upgrade (Next dropped the `next lint` command and `eslint-config-next` was stuck at 14.1.0 while the config referenced `next/typescript`). The project lints again via a native `eslint-config-next` 16 flat config and an `eslint .` script
