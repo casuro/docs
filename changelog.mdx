@@ -4,6 +4,12 @@ description: "Product updates and announcements"
 rss: true
 ---
 
+<Update label="Aug 31, 2026" description="V0.53.0">
+- 🎯 **More honest AI interview evaluations** - if an AI interview evaluation can't finish scoring after repeated attempts, it now shows as a failed run instead of silently filling in a default middle-of-the-road score for every criterion. You'll always be able to tell a completed evaluation from one that needs a retry
+- 🏛️ **Agentic evaluation foundation (not yet enabled)** - this release lands the backend and UI for a multi-agent evaluation system ("Boardroom") that reviews candidate submissions with a live, explainable multi-agent thread, per-case grading playbooks, and a consistent scorecard layout across every candidate. It ships fully behind a deployment-level flag and is not turned on for any organization yet - a future changelog entry will cover it once it's live
+- 🩹 **Tighter spacing on the challenge action row** - the "Upload a file" and "Update" controls on the case view no longer crowd each other
+</Update>
+
 <Update label="August 27, 2026" description="V0.50.0">
 - 📄 **Document deliverables are now actually read and scored** - case study file uploads (PDF, DOCX, and plain text) are extracted and evaluated against the rubric, with verbatim quotes from the document as evidence for each criterion instead of guesses from the filename alone. Scanned or image-only PDFs and other unreadable files are labeled honestly rather than scored blind. Rubric evaluations are also upgraded from GPT-4o to Claude Opus 5
 </Update>
